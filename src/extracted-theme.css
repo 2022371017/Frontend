@@ -1,0 +1,242 @@
+/* ===============================================
+   TEMA EXTRAÍDO DEL DIST - ESTILO AZUL-VIOLETA
+   =============================================== */
+
+/* Reset global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===============================================
+   INPUTS Y FORMULARIOS
+   =============================================== */
+
+/* Input text básico */
+.p-inputtext,
+.p-inputtext:enabled:focus,
+.p-inputtext:enabled:hover {
+  background-color: #f8fafc !important;
+  color: #2d3748 !important;
+  border: 2px solid #e2e8f0 !important;
+}
+
+.p-inputtext:enabled:focus {
+  border-color: #667eea !important;
+  background-color: #fff !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+.p-inputtext:enabled:hover {
+  border-color: #cbd5e0 !important;
+}
+
+/* Textarea */
+.p-inputtextarea,
+.p-inputtextarea:enabled:focus,
+.p-inputtextarea:enabled:hover {
+  background-color: #f8fafc !important;
+  color: #2d3748 !important;
+  border: 2px solid #e2e8f0 !important;
+}
+
+.p-inputtextarea:enabled:focus {
+  border-color: #667eea !important;
+  background-color: #fff !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Dropdown */
+.p-dropdown,
+.p-dropdown:not(.p-disabled):hover,
+.p-dropdown:not(.p-disabled).p-focus {
+  background-color: #f8fafc !important;
+  color: #2d3748 !important;
+  border: 2px solid #e2e8f0 !important;
+}
+
+.p-dropdown:not(.p-disabled).p-focus {
+  border-color: #667eea !important;
+  background-color: #fff !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Calendar */
+.p-calendar .p-inputtext,
+.p-calendar .p-inputtext:enabled:focus,
+.p-calendar .p-inputtext:enabled:hover {
+  background-color: #f8fafc !important;
+  color: #2d3748 !important;
+  border: 2px solid #e2e8f0 !important;
+}
+
+.p-calendar .p-inputtext:enabled:focus {
+  border-color: #667eea !important;
+  background-color: #fff !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Inputs generales */
+input,
+textarea,
+select {
+  background-color: #f8fafc !important;
+  color: #2d3748 !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 1rem !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: #667eea !important;
+  background-color: #fff !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Placeholder */
+::placeholder {
+  color: #a0aec0 !important;
+  opacity: 1 !important;
+}
+
+/* Labels */
+label {
+  color: #2d3748 !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+}
+
+/* ===============================================
+   BOTONES
+   =============================================== */
+
+/* Botón principal */
+.p-button {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+}
+
+.p-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5a67d8, #6b46c1) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3) !important;
+}
+
+/* ===============================================
+   DIALOGS Y MODALES
+   =============================================== */
+
+/* Dialog header */
+.p-dialog .p-dialog-header {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  color: #fff !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+/* Dialog content */
+.p-dialog .p-dialog-content {
+  background-color: #f8fafc !important;
+  border-radius: 0 0 12px 12px !important;
+}
+
+/* ===============================================
+   TOOLTIPS Y TOAST
+   =============================================== */
+
+/* Tooltip */
+.p-tooltip .p-tooltip-text {
+  background-color: #2d3748 !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+}
+
+/* Toast messages */
+.p-toast .p-toast-message {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ===============================================
+   VARIABLES CSS PERSONALIZADAS
+   =============================================== */
+
+:root {
+  /* Colores principales del tema */
+  --primary-color: #667eea;
+  --primary-dark: #5a67d8;
+  --secondary-color: #764ba2;
+  --secondary-dark: #6b46c1;
+  
+  /* Colores de fondo */
+  --bg-light: #f8fafc;
+  --bg-white: #ffffff;
+  
+  /* Colores de texto */
+  --text-primary: #2d3748;
+  --text-secondary: #a0aec0;
+  
+  /* Colores de borde */
+  --border-light: #e2e8f0;
+  --border-hover: #cbd5e0;
+  
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, #667eea, #764ba2);
+  --gradient-primary-hover: linear-gradient(135deg, #5a67d8, #6b46c1);
+  
+  /* Sombras */
+  --shadow-focus: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  --shadow-hover: 0 8px 25px rgba(102, 126, 234, 0.3);
+  --shadow-card: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ===============================================
+   CLASES UTILITARIAS
+   =============================================== */
+
+/* Gradiente de fondo */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-primary-hover:hover {
+  background: var(--gradient-primary-hover);
+}
+
+/* Colores de texto */
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+/* Bordes redondeados */
+.rounded-lg {
+  border-radius: 8px;
+}
+
+.rounded-xl {
+  border-radius: 12px;
+}
+
+/* Sombras */
+.shadow-focus {
+  box-shadow: var(--shadow-focus);
+}
+
+.shadow-hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}

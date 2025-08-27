@@ -1,0 +1,185 @@
+<!-- Header Navigation -->
+<header class="header">
+  <div class="header-content">
+    <div class="brand">
+      <div class="logo-icon">
+        <i class="pi pi-check-square"></i>
+      </div>
+      <div class="brand-info">
+        <h1 class="brand-title">TAREAS</h1>
+        <p class="brand-subtitle">Organiza tu vida, maximiza tu productividad</p>
+      </div>
+    </div>
+    
+    <nav class="nav-buttons">
+      <button class="nav-btn" [routerLink]="['/task/task-list']">
+        <i class="pi pi-list"></i>
+        Mis Tareas
+      </button>
+      <button class="nav-btn" [routerLink]="['/dashboard']">
+        <i class="pi pi-chart-bar"></i>
+        Dashboard
+      </button>
+      <button class="nav-btn logout-btn" (click)="logout()">
+        <i class="pi pi-sign-out"></i>
+        Cerrar Sesión
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">Bienvenido a tu centro<br>de productividad</h1>
+        <p class="hero-description">
+          TAREAS te ayuda a organizar tus tareas, seguir tu progreso y
+          mantener el control de todas tus actividades diarias. Simplifica tu
+          vida con nuestra plataforma intuitiva.
+        </p>
+        
+        <div class="hero-features">
+          <div class="feature-item">
+            <i class="pi pi-check-circle"></i>
+            <span>Gestión inteligente de tareas</span>
+          </div>
+          <div class="feature-item">
+            <i class="pi pi-chart-line"></i>
+            <span>Análisis detallado de progreso</span>
+          </div>
+          <div class="feature-item">
+            <i class="pi pi-shield"></i>
+            <span>Seguridad de dos factores</span>
+          </div>
+        </div>
+        
+        <div class="hero-actions">
+          <button class="btn-primary" [routerLink]="['/task/task-list']">
+            <i class="pi pi-arrow-right"></i>
+            Comenzar con mis tareas
+          </button>
+          <button class="btn-secondary" [routerLink]="['/dashboard']">
+            <i class="pi pi-chart-bar"></i>
+            Ver estadísticas
+          </button>
+        </div>
+      </div>
+      
+      <div class="hero-sidebar">
+        <button class="sidebar-btn">Gestionar tareas</button>
+        <div class="productivity-cards">
+          <div class="productivity-card">
+            <i class="pi pi-chart-line"></i>
+            <span>Ver progreso</span>
+          </div>
+          <div class="productivity-card">
+            <i class="pi pi-calendar"></i>
+            <span>Organizar agenda</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon pending">
+          <i class="pi pi-circle"></i>
+        </div>
+        <div class="stat-number">0</div>
+        <div class="stat-label">Tareas pendientes</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon completed">
+          <i class="pi pi-check-circle"></i>
+        </div>
+        <div class="stat-number">0</div>
+        <div class="stat-label">Tareas completadas</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon time">
+          <i class="pi pi-clock"></i>
+        </div>
+        <div class="stat-number">0</div>
+        <div class="stat-label">Tiempo invertido</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon productivity">
+          <i class="pi pi-chart-pie"></i>
+        </div>
+        <div class="stat-number">0%</div>
+        <div class="stat-label">Productividad</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="features-section">
+    <h2 class="section-title">¿Por qué elegir TAREAS?</h2>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="pi pi-mobile"></i>
+        </div>
+        <h3 class="feature-title">Diseño Responsivo</h3>
+        <p class="feature-description">
+          Accede a tus tareas desde cualquier dispositivo, manteniendo la misma experiencia de usuario.
+        </p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="pi pi-bolt"></i>
+        </div>
+        <h3 class="feature-title">Rápido y Eficiente</h3>
+        <p class="feature-description">
+          Interfaz optimizada para que puedas gestionar tus tareas de manera rápida y sin complicaciones.
+        </p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="pi pi-shield"></i>
+        </div>
+        <h3 class="feature-title">Seguridad Avanzada</h3>
+        <p class="feature-description">
+          Protege tu información con autenticación de dos factores y encriptación de datos.
+        </p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="pi pi-chart-bar"></i>
+        </div>
+        <h3 class="feature-title">Análisis Detallado</h3>
+        <p class="feature-description">
+          Obtén insights valiosos sobre tu productividad y patrones de trabajo.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2 class="cta-title">¿Listo para aumentar tu productividad?</h2>
+      <p class="cta-description">
+        Comienza ahora mismo organizando tus tareas y toma el control de tu tiempo
+      </p>
+      <button class="cta-button" [routerLink]="['/task/task-list']">
+        Comenzar ahora
+      </button>
+    </div>
+  </section>
+  
+</main>

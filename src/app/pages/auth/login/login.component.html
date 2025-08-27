@@ -1,0 +1,101 @@
+<div class="auth-container">
+  <!-- Círculos decorativos -->
+  <div class="bg-circle circle-1"></div>
+  <div class="bg-circle circle-2"></div>
+  <div class="bg-circle circle-3"></div>
+  <div class="bg-circle circle-4"></div>
+
+  <div class="auth-card-wrapper">
+    <div class="auth-card">
+      <!-- Header con ícono y título -->
+      <div class="auth-header">
+        <div class="app-icon">
+          <i class="pi pi-check-square"></i>
+        </div>
+        <h1 class="app-title">TAREAS</h1>
+      </div>
+
+      <!-- Subtítulo -->
+      <div class="auth-subtitle-section">
+        <h2 class="welcome-title">Bienvenido de vuelta</h2>
+        <p class="welcome-subtitle">Inicia sesión para continuar con tu productividad</p>
+      </div>
+
+      <!-- Formulario -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
+        <!-- Usuario o Email -->
+        <div class="input-group">
+          <label class="input-label">
+            <i class="pi pi-user"></i>
+            Usuario o Email
+          </label>
+          <input 
+            type="text" 
+            class="form-input" 
+            formControlName="identifier" 
+            placeholder="Ingresa tu usuario o email"
+            [class.error]="loginForm.controls['identifier'].invalid && loginForm.controls['identifier'].touched" />
+          <div *ngIf="loginForm.controls['identifier'].invalid && loginForm.controls['identifier'].touched" class="error-message">
+            El usuario o email es requerido.
+          </div>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="input-group">
+          <label class="input-label">
+            <i class="pi pi-lock"></i>
+            Contraseña
+          </label>
+          <input 
+            type="password" 
+            class="form-input" 
+            formControlName="password" 
+            placeholder="Ingresa tu contraseña"
+            [class.error]="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" />
+          <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="error-message">
+            La contraseña es requerida.
+          </div>
+        </div>
+
+        <!-- Código OTP -->
+        <div class="input-group">
+          <label class="input-label">
+            <i class="pi pi-key"></i>
+            Código OTP
+          </label>
+          <input 
+            type="text" 
+            class="form-input" 
+            formControlName="otp" 
+            placeholder="Ingresa el código"
+            maxlength="6"
+            [class.error]="loginForm.controls['otp'].invalid && loginForm.controls['otp'].touched" />
+          <div *ngIf="loginForm.controls['otp'].invalid && loginForm.controls['otp'].touched" class="error-message">
+            El código OTP es requerido.
+          </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="button-group">
+          <button type="submit" class="btn-primary" [disabled]="loginForm.invalid" [class.loading]="isLoading">
+            <i class="pi pi-sign-in"></i>
+            Iniciar Sesión
+          </button>
+          <button type="button" class="btn-secondary" (click)="loginForm.reset()">
+            <i class="pi pi-refresh"></i>
+            Limpiar
+          </button>
+        </div>
+      </form>
+
+      <!-- Link de registro -->
+      <div class="auth-footer">
+        <p class="footer-text">¿No tienes una cuenta?</p>
+        <button class="btn-link" routerLink="/auth/register">
+          <i class="pi pi-user-plus"></i>
+          Crear cuenta
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,210 @@
+<!-- Page Header -->
+<div class="page-header">
+  <div class="header-content">
+    <button class="back-btn" (click)="cancel()">
+      <i class="pi pi-arrow-left"></i>
+    </button>
+    <div class="header-info">
+      <h1 class="page-title">Crear Nueva Tarea</h1>
+      <p class="page-subtitle">Organiza tu trabajo de manera eficiente</p>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-container">
+  <div class="content-grid">
+    
+    <!-- Form Section -->
+    <div class="form-section">
+      <div class="form-card">
+        <!-- Form Header -->
+        <div class="form-header">
+          <div class="form-icon">
+            <i class="pi pi-plus-circle"></i>
+          </div>
+          <div class="form-title-section">
+            <h2 class="form-title">Información de la Tarea</h2>
+            <p class="form-subtitle">Completa los detalles para crear tu nueva tarea</p>
+          </div>
+        </div>
+
+        <!-- Form Fields -->
+        <form class="task-form">
+          
+          <!-- Descripción -->
+          <div class="form-group">
+            <label class="form-label" for="task-description">
+              <i class="pi pi-pencil"></i>
+              Descripción de la tarea
+            </label>
+            <textarea 
+              id="task-description"
+              class="form-textarea"
+              [(ngModel)]="description"
+              name="description"
+              placeholder="Describe detalladamente qué necesitas hacer..."
+              rows="4">
+            </textarea>
+            <small class="form-help">Describe la tarea de manera clara y específica</small>
+          </div>
+
+          <!-- Configuración -->
+          <div class="form-section-title">Configuración</div>
+          
+          <div class="form-row">
+            <!-- Fecha límite -->
+            <div class="form-group half-width">
+              <label class="form-label" for="task-deadline">
+                <i class="pi pi-calendar"></i>
+                Fecha límite
+              </label>
+              <input 
+                id="task-deadline"
+                type="date" 
+                class="form-input"
+                [(ngModel)]="deadline"
+                name="deadline">
+              <small class="form-help">Establece cuándo debe completarse la tarea</small>
+            </div>
+
+            <!-- Prioridad -->
+            <div class="form-group half-width">
+              <label class="form-label" for="task-priority">
+                <i class="pi pi-flag"></i>
+                Prioridad
+              </label>
+              <select 
+                id="task-priority"
+                class="form-select"
+                [(ngModel)]="priority"
+                name="priority">
+                <option value="">Selecciona prioridad</option>
+                <option value="low">Baja</option>
+                <option value="medium">Media</option>
+                <option value="high">Alta</option>
+                <option value="urgent">Urgente</option>
+              </select>
+              <small class="form-help">Define qué tan importante es esta tarea</small>
+            </div>
+          </div>
+
+          <!-- Estado inicial -->
+          <div class="form-group">
+            <label class="form-label" for="task-status">
+              <i class="pi pi-list"></i>
+              Estado inicial
+            </label>
+            <select 
+              id="task-status"
+              class="form-select"
+              [(ngModel)]="status"
+              name="status">
+              <option value="">Selecciona estado</option>
+              <option value="pending">Pendiente</option>
+              <option value="in_progress">En progreso</option>
+              <option value="done">Completada</option>
+            </select>
+            <small class="form-help">En qué estado comenzará la tarea</small>
+          </div>
+
+          <!-- Detalles adicionales -->
+          <div class="form-section-title">Detalles adicionales</div>
+          
+          <!-- Etiquetas -->
+          <div class="form-group">
+            <label class="form-label" for="task-tags">
+              <i class="pi pi-tags"></i>
+              Etiquetas (opcional)
+            </label>
+            <input 
+              id="task-tags"
+              type="text" 
+              class="form-input"
+              [(ngModel)]="tags"
+              name="tags"
+              placeholder="Etiquetas separadas por comas (ej: trabajo, urgente, proyecto)">
+            <small class="form-help">Agrega etiquetas para organizar mejor tus tareas</small>
+          </div>
+
+          <!-- Notas adicionales -->
+          <div class="form-group">
+            <label class="form-label" for="task-notes">
+              <i class="pi pi-file-edit"></i>
+              Notas adicionales (opcional)
+            </label>
+            <textarea 
+              id="task-notes"
+              class="form-textarea"
+              [(ngModel)]="notes"
+              name="notes"
+              placeholder="Agrega cualquier información adicional, contexto o recordatorios..."
+              rows="3">
+            </textarea>
+            <small class="form-help">Información adicional que pueda ser útil</small>
+          </div>
+
+        </form>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button class="btn-cancel" (click)="cancel()">
+            <i class="pi pi-times"></i>
+            Cancelar
+          </button>
+          <button class="btn-create" (click)="createTask()">
+            <i class="pi pi-check"></i>
+            Crear Tarea
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview Section -->
+    <div class="preview-section">
+      <div class="preview-card">
+        <div class="preview-header">
+          <h3 class="preview-title">Vista previa</h3>
+          <p class="preview-subtitle">Así se verá tu tarea</p>
+        </div>
+        
+        <div class="task-preview">
+          <div class="preview-icons">
+            <div class="preview-icon-item">
+              <i class="pi pi-file-edit"></i>
+            </div>
+            <div class="preview-icon-item">
+              <i class="pi pi-clock"></i>
+            </div>
+          </div>
+          
+          <div class="preview-content">
+            <div class="preview-description">
+              {{ description || 'Descripción de la tarea aparecerá aquí...' }}
+            </div>
+            
+            <div class="preview-details" *ngIf="deadline || priority || status">
+              <div class="preview-detail" *ngIf="deadline">
+                <i class="pi pi-calendar"></i>
+                <span>{{ deadline }}</span>
+              </div>
+              <div class="preview-detail" *ngIf="priority">
+                <i class="pi pi-flag"></i>
+                <span>{{ getPriorityLabel(priority) }}</span>
+              </div>
+              <div class="preview-detail" *ngIf="status">
+                <i class="pi pi-list"></i>
+                <span>{{ getStatusLabel(status) }}</span>
+              </div>
+            </div>
+            
+            <div class="preview-tags" *ngIf="tags">
+              <span class="preview-tag" *ngFor="let tag of getTagsArray()">{{ tag }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.error-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--surface-ground); /* opcional: usa el fondo del tema */
+  padding: 1rem;
+}
+
+.error-card {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}

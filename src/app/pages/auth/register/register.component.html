@@ -1,0 +1,143 @@
+<div class="auth-container">
+  <!-- Círculos decorativos -->
+  <div class="bg-circle circle-1"></div>
+  <div class="bg-circle circle-2"></div>
+  <div class="bg-circle circle-3"></div>
+  <div class="bg-circle circle-4"></div>
+
+  <div class="auth-card-wrapper">
+    <div class="auth-card">
+      <!-- Header con ícono y título -->
+      <div class="auth-header">
+        <div class="app-icon">
+          <i class="pi pi-check-square"></i>
+        </div>
+        <h1 class="app-title">TAREAS</h1>
+      </div>
+
+      <!-- Subtítulo -->
+      <div class="auth-subtitle-section">
+        <h2 class="welcome-title">Únete a nosotros</h2>
+        <p class="welcome-subtitle">Crea tu cuenta y comienza a organizar tu vida</p>
+      </div>
+
+      <!-- Formulario -->
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+        <!-- Nombre de usuario -->
+        <div class="input-group">
+          <label class="input-label">
+            <i class="pi pi-user"></i>
+            Nombre de usuario
+          </label>
+          <input 
+            type="text" 
+            class="form-input" 
+            formControlName="username" 
+            placeholder="Elige un nombre de usuario"
+            [class.error]="registerForm.controls['username'].invalid && registerForm.controls['username'].touched" />
+          <div *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched" class="error-message">
+            El nombre de usuario es requerido.
+          </div>
+        </div>
+
+        <!-- Correo electrónico -->
+        <div class="input-group">
+          <label class="input-label">
+            <i class="pi pi-envelope"></i>
+            Correo electrónico
+          </label>
+          <input 
+            type="email" 
+            class="form-input" 
+            formControlName="email" 
+            placeholder="Ingresa tu correo electrónico"
+            [class.error]="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" />
+          <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="error-message">
+            <div *ngIf="registerForm.controls['email'].errors?.['required']">El email es requerido.</div>
+            <div *ngIf="registerForm.controls['email'].errors?.['email']">Debe ser un email válido.</div>
+          </div>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="input-group">
+          <label class="input-label">
+            <i class="pi pi-lock"></i>
+            Contraseña
+          </label>
+          <input 
+            type="password" 
+            class="form-input" 
+            formControlName="password" 
+            placeholder="Crea una contraseña segura"
+            [class.error]="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" />
+          
+          <!-- Requisitos de contraseña -->
+          <div class="password-requirements">
+            <p class="requirements-title">Requisitos de la contraseña:</p>
+            <div class="requirement-item" [class.valid]="hasMinLength">
+              <i class="pi" [class.pi-check]="hasMinLength" [class.pi-times]="!hasMinLength"></i>
+              Mínimo 8 caracteres
+            </div>
+            <div class="requirement-item" [class.valid]="hasUppercase">
+              <i class="pi" [class.pi-check]="hasUppercase" [class.pi-times]="!hasUppercase"></i>
+              Al menos una mayúscula
+            </div>
+            <div class="requirement-item" [class.valid]="hasNumber">
+              <i class="pi" [class.pi-check]="hasNumber" [class.pi-times]="!hasNumber"></i>
+              Al menos un número
+            </div>
+            <div class="requirement-item" [class.valid]="hasSpecialChar">
+              <i class="pi" [class.pi-check]="hasSpecialChar" [class.pi-times]="!hasSpecialChar"></i>
+              Al menos un carácter especial (!&#64;#$%^&*)
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón -->
+        <div class="button-group">
+          <button type="submit" class="btn-primary" [disabled]="registerForm.invalid || isLoading" [class.loading]="isLoading">
+            <i class="pi pi-user-plus"></i>
+            Crear cuenta
+          </button>
+        </div>
+      </form>
+
+      <!-- Link de login -->
+      <div class="auth-footer">
+        <p class="footer-text">¿Ya tienes una cuenta?</p>
+        <button class="btn-link" routerLink="/auth/login">
+          <i class="pi pi-sign-in"></i>
+          Iniciar sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal con el QR -->
+
+<p-dialog
+  [(visible)]="showQr"
+  [modal]="true"
+  appendTo="body"
+  [blockScroll]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [closeOnEscape]="true"
+  (onHide)="closeAndGoToLogin()"
+  header="Verifica tu identidad"
+  [style]="{ width: '360px' }">
+
+  <div class="qr-container" *ngIf="qrCodeBase64">
+    <h4>Escanea este código QR con Google Authenticator</h4>
+   <img [src]="'data:image/png;base64,' + qrCodeBase64" alt="QR de autenticación" />
+  </div>
+
+  <ng-template pTemplate="footer">
+  <button
+    pButton
+    label="Cerrar e iniciar sesión"
+    (click)="closeAndGoToLogin()">
+  </button>
+</ng-template>
+</p-dialog>
